@@ -33,3 +33,53 @@ The 3 classes of weights are "g" for grams, "Kg" for kilograms. and "Ton" for To
 I handeled also inputs with numbers less than zero in quanities, weights, and prices.
 
 The shipping amount is calculated as follows 15 for orders less than 1 Kg, 30 for every Kilogram rounded , and 10000 for every ton rounded.
+
+Also, Products number is subtracted when added to cart.
+Case 1: adding items to the cart normally and the customer have balance
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 32 34 PM" src="https://github.com/user-attachments/assets/dfa0c303-23b0-4b40-a007-4e06e273a6eb" />
+
+case 2: customer have balance, and added 2 items one shippable and one is not
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 34 18 PM" src="https://github.com/user-attachments/assets/b4f18667-8f5f-4324-a5f0-c94bcdea4066" />
+
+case 3: customer has no enough balance
+ 
+<img width="1680" alt="Screenshot 2025-07-04 at 10 35 41 PM" src="https://github.com/user-attachments/assets/d023db19-d521-4c13-a5cf-1fe0cc7208f4" />
+
+Case 4: Shipping Cart is Empty
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 36 48 PM" src="https://github.com/user-attachments/assets/d42f6599-55c8-4621-a7fc-5753777c5c31" />
+
+Case 5: customer adding expired item
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 37 48 PM" src="https://github.com/user-attachments/assets/908eb517-90f8-4e25-9655-ef437a4ff0ae" />
+
+Case 6: Customer adding quantity less than in stock or out of Stock
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 39 24 PM" src="https://github.com/user-attachments/assets/66a447ea-fbbc-4ffe-b6d7-7ea2d1a74469" />
+<img width="1680" alt="Screenshot 2025-07-04 at 10 39 09 PM" src="https://github.com/user-attachments/assets/16156ef6-3a9d-4279-ad22-e57581445ddc" />
+
+case 7: adding multiple items of the same product
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 40 44 PM" src="https://github.com/user-attachments/assets/a3c32231-63b7-401d-9cca-9fe387d31b61" />
+
+case 8: defining product with negative price
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 41 58 PM" src="https://github.com/user-attachments/assets/04765edf-24e1-49ed-b73c-750fac80fa93" />
+
+case 9: adding negative weight
+
+<img width="1680" alt="Screenshot 2025-07-04 at 10 42 51 PM" src="https://github.com/user-attachments/assets/efaa1b1b-4c54-4e92-b7c5-7d3441239aca" />
+
+case 10: adding multiple items of un shippable product
+<img width="1680" alt="Screenshot 2025-07-04 at 10 44 42 PM" src="https://github.com/user-attachments/assets/665cb761-1cf4-4993-a368-d0c1fff19d0c" />
+
+
+
+
+
+
+
+
+
