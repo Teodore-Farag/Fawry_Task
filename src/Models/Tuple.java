@@ -1,6 +1,8 @@
 package Models;
 
-public class Tuple<Product, Quantity> implements ShipableItems{
+import Interface.ShipableItems;
+
+public class Tuple<Product, Quantity> implements ShipableItems {
     public Products product;
     public int quantity;
 

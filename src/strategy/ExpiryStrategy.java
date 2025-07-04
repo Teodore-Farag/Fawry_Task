@@ -1,4 +1,4 @@
-package Models;
+package strategy;
 
 import java.time.LocalDate;
 

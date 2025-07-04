@@ -1,4 +1,10 @@
+import Interface.ShipableItems;
 import Models.*;
+import Service.ShippingService;
+import strategy.Expiry;
+import strategy.NoExpiry;
+import strategy.NotShippable;
+import strategy.Shippable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,15 +13,15 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
 //          Case1 adding items to the cart and user have enough balance and all are shippable
-//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
-//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
-//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
-//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
-//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
-//        Cart cart=new Cart(1);
-//        cart.add(cheese,2);
-//        cart.add(tv,1);
-//        checkout(customer,cart);
+        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+        Cart cart=new Cart(1);
+        cart.add(cheese,2);
+        cart.add(tv,1);
+        checkout(customer,cart);
 //        case 2 customer have balance, and added 2 items one shippable and one is not
 //        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
 //        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
@@ -101,7 +107,7 @@ public class Main {
 //        cart.add(cheese,1);
 //        cart.add(tv,1);
 //        checkout(customer,cart);
-        //        case 10 adding multiple items of un shippable product
+//                case 10 adding multiple items of un shippable product
 //        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
 //        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
 //        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
@@ -128,14 +134,17 @@ public class Main {
             }
         }
         List<ShipableItems> shipping=new ArrayList<>();
-        List<Tuple> shippingV2=new ArrayList<>();
+        List<Tuple>shipping2=new ArrayList<>();
         for (int i=0;i<cart.getProducts().size();i++){
             if(cart.getProducts().get(i).product.isShippable()){
                 shipping.add(cart.getProducts().get(i));
-                shippingV2.add(cart.getProducts().get(i));
+                shipping2.add(cart.getProducts().get(i));
             }
         }
-        ShippingService.processV2(shippingV2);
+        List ShippableOutput=ShippingService.process(shipping);
+        for (int i=0;i<ShippableOutput.size();i++){
+            System.out.println(shipping2.get(i).getQuantity()+"X "+ShippableOutput.get(i)+calculateProductWeight(shipping2.get(i),shipping2.get(i).getQuantity()));
+        }
         System.out.println("Total Package Weight "+ cart.getFullCartWeight());
         System.out.println();
         System.out.println("*** Checkout receipt ***");
@@ -165,5 +174,19 @@ public class Main {
             return 10000*Math.round(cart.getWeight());
         }
 
+    }
+    public static String  calculateProductWeight(Tuple product,int quantity) {
+        double weight=product.getWeight()*quantity;
+        String weightUnit=product.getWeightUnit();
+        if(weight>=1000 && weightUnit.equals("g")){
+            weight/=1000;
+            weightUnit="Kg";
+        }
+        if(weight>=1000 && weightUnit.equals("Kg")){
+            weight/=1000;
+            weightUnit="Ton";
+        }
+
+        return (weight+""+weightUnit);
     }
 }

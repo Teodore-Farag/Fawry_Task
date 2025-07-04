@@ -1,4 +1,4 @@
-package Models;
+package strategy;
 
 public interface ShippingStrategy {
     boolean isShippable();

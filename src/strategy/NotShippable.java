@@ -1,4 +1,4 @@
-package Models;
+package strategy;
 
 public class NotShippable implements ShippingStrategy{
     @Override

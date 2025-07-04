@@ -1,5 +1,8 @@
 package Models;
 
+import strategy.ExpiryStrategy;
+import strategy.ShippingStrategy;
+
 import java.time.LocalDate;
 
 public class Products {

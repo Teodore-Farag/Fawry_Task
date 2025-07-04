@@ -1,6 +1,4 @@
-package Models;
-
-import java.time.LocalDate;
+package strategy;
 
 public class Shippable implements ShippingStrategy{
     private double weight;

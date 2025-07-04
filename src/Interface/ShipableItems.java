@@ -1,4 +1,4 @@
-package Models;
+package Interface;
 
 public interface ShipableItems {
     String getName();
