@@ -3,7 +3,7 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart {
+public class  Cart {
     private int customer_id;
     private List<Tuple> products=new ArrayList<>();
     private double total;

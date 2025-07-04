@@ -6,17 +6,116 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
-        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(500,"g"));
-        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
-        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
-        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
-        Cart cart=new Cart(1);
-        cart.add(cheese,2);
-        cart.add(tv,1);
-        cart.add(tv,1);
-        cart.add(cheese,1);
-        checkout(customer,cart);
+//          Case1 adding items to the cart and user have enough balance and all are shippable
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(cheese,2);
+//        cart.add(tv,1);
+//        checkout(customer,cart);
+//        case 2 customer have balance, and added 2 items one shippable and one is not
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(cheese,2);
+//        cart.add(scratchCard,1);
+//        checkout(customer,cart);
+//    }
+////        case 3 customer has no enough balance
+//        Customers customer = new Customers("Teodore", 1, 100, "Teodoremaged@gmail.com");
+//        Products cheese = new Products("Cheese", 100, 10, new Expiry(LocalDate.of(2025, 7, 20)), new Shippable(600, "g"));
+//        Products biscuit = new Products("Biscuits", 150, 2, new Expiry(LocalDate.of(2026, 7, 1)), new Shippable(700, "g"));
+//        Products tv = new Products("TV", 3000, 7, new NoExpiry(), new Shippable(3, "Kg"));
+//        Products scratchCard = new Products("Scratch Card", 10, 100, new Expiry(LocalDate.of(2029, 1, 1)), new NotShippable());
+//        Cart cart = new Cart(1);
+//        cart.add(cheese, 2);
+//        cart.add(tv, 1);
+//        checkout(customer, cart);
+//        Case 4 Shipping Cart is Empty
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        checkout(customer,cart);
+//        Case 5 customer adding expired item
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2024, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(cheese,2);
+//        cart.add(tv,1);
+//        checkout(customer,cart);
+//        Case 6 Customer adding quantity less than in stock or out of Stock
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,0,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(cheese,2);
+//        cart.add(tv,1);
+//        checkout(customer,cart);
+//        case 7 adding multiple items of the same product
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(cheese,2);
+//        cart.add(tv,1);
+//        cart.add(cheese,1);
+//        cart.add(tv,1);
+//        checkout(customer,cart);
+        //        case 8 defining product with negative price
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",-100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(cheese,2);
+//        cart.add(tv,1);
+//        cart.add(cheese,1);
+//        cart.add(tv,1);
+//        checkout(customer,cart);
+        //        case 9 adding negative weight
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(-3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(cheese,2);
+//        cart.add(tv,1);
+//        cart.add(cheese,1);
+//        cart.add(tv,1);
+//        checkout(customer,cart);
+        //        case 10 adding multiple items of un shippable product
+//        Customers customer=new Customers("Teodore",1,8370,"Teodoremaged@gmail.com");
+//        Products cheese= new Products("Cheese",100,10,new Expiry(LocalDate.of(2025, 7, 20)),new Shippable(600,"g"));
+//        Products biscuit= new Products("Biscuits",150,2,new Expiry(LocalDate.of(2026, 7, 1)),new Shippable(700,"g"));
+//        Products tv= new Products("TV",3000,7,new NoExpiry(),new Shippable(3,"Kg"));
+//        Products scratchCard= new Products("Scratch Card",10,100,new Expiry(LocalDate.of(2029, 1, 1)),new NotShippable());
+//        Cart cart=new Cart(1);
+//        cart.add(scratchCard,2);
+//        cart.add(scratchCard,1);
+//        cart.add(scratchCard,1);
+//        cart.add(scratchCard,1);
+//        checkout(customer,cart);
+
+
+
     }
     public static void checkout(Customers customer, Cart cart) throws Exception {
         System.out.println("Customer Balance Before: "+ customer.getBalance());
@@ -55,6 +154,9 @@ public class Main {
         System.out.println("Customer Balance After: "+ customer.getBalance());
     }
     public static double shipmentPrice(Cart cart){
+        if(cart.getWeight()==0){
+            return 0;
+        }
         if(cart.getWeightUnit().equals("g")){
             return 15;
         } else if (cart.getWeightUnit().equals("Kg")) {
